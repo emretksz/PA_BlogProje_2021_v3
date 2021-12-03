@@ -1,0 +1,107 @@
+﻿@model PA_BlogProject_2021.Models.Abouts
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/ManagementPanel/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Abouts</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MissionTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MissionTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MissonDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MissonDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VissionTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VissionTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VissionDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VissionDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApproachTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApproachTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApproachDescriptin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApproachDescriptin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegisterDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisterDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AboutId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

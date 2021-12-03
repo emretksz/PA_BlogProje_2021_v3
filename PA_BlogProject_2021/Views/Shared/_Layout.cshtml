@@ -1,0 +1,40 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+ 
+
+    @Html.Partial("_Head")
+
+</head>
+
+<body>
+
+
+    <!-- Header Start -->
+
+   @Html.Partial("_Header")
+
+    <!-- Header Close -->
+
+    <div class="main-wrapper ">
+
+        @RenderSection("IndexSlider",false)
+        @RenderSection("AboutSlider",false)
+        <!-- Slider Start -->
+      @RenderBody()
+
+        <!-- footer Start -->
+@Html.Partial("_Footer")
+
+    </div>
+
+    <!--
+    Essential Scripts
+    =====================================-->
+    <!-- Main jQuery -->
+ @Html.Partial("_Scripts")
+
+    @RenderSection("Scripts",false)
+
+</body>
+</html>

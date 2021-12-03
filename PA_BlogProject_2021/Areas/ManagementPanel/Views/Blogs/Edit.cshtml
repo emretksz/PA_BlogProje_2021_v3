@@ -1,0 +1,134 @@
+﻿@model PA_BlogProject_2021.Models.Blogs
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/ManagementPanel/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit","Blogs",FormMethod.Post,new {enctype="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Blogs</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.BlogId)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SubTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SubTitle, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SubTitle, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span>Resim Yükle:</span>
+        <div class="col-md-10">
+            <img src="@Model.ImageURL" width="25%" alt="Alternate Text" />
+            <input type="file" name="imgFile" value="" />
+            @Html.ValidationMessageFor(model => model.ImageURL, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.IsActive)
+                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span>Yazarın Adı:</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BlogDetails.AuthorName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BlogDetails.AuthorName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span>Yazarın Resmi:</span>
+        <div class="col-md-10">
+            <img src="@Model.BlogDetails.AuthorImageURL" width="25%" alt="Alternate Text" />
+            <input type="file" name="authorFile" value="" />
+            @Html.ValidationMessageFor(model => model.BlogDetails.AuthorName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span>Yazarın İşi:</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BlogDetails.AuthorJob, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BlogDetails.AuthorJob, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span>Yazar Hakkında:</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BlogDetails.AuthorDescription, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BlogDetails.AuthorDescription, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+    <div class="form-group">
+        <span>Linkedin:</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BlogDetails.LinkedinURL, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BlogDetails.LinkedinURL, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span>Twitter:</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BlogDetails.TwitterURL, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BlogDetails.TwitterURL, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span>Blog Yazısı:</span>
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.BlogDetails.Description, new { @class = "form-control", id = "editor1" })
+            @Html.ValidationMessageFor(model => model.BlogDetails.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <span>Etiketler</span>
+        <div class="col-md-10">
+            @if (ViewBag.TagId!=null)
+            {
+                foreach (var item in (SelectList)ViewBag.TagId)
+                {
+                    int tagId = Convert.ToInt32(item.Value);
+            <input type="checkbox" @(Model.Tags.Any(t=>t.TagId==tagId)?"checked":"") name="TagId" value="@item.Value" />
+            <span >@item.Text</span>
+                }
+            }
+             @Html.ValidationMessageFor(model => model.BlogDetails.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

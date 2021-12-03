@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PA_BlogProje_2021_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Abouts">
+    <Key>
+      <PropertyRef Name="AboutId" />
+    </Key>
+    <Property Name="AboutId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="SubTitle" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="MissionTitle" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="MissonDescription" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="VissionTitle" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="VissionDescription" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="ApproachTitle" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ApproachDescriptin" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="RegisterDate" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BlogDetails">
+    <Key>
+      <PropertyRef Name="BlogId" />
+    </Key>
+    <Property Name="BlogId" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="AuthorName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AuthorJob" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AuthorDescription" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="AuthorImageURL" Type="varchar(max)" Nullable="false" />
+    <Property Name="TwitterURL" Type="varchar(max)" Nullable="false" />
+    <Property Name="LinkedinURL" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Blogs">
+    <Key>
+      <PropertyRef Name="BlogId" />
+    </Key>
+    <Property Name="BlogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SubTitle" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ImageURL" Type="varchar(max)" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="RegisterDate" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BlogToTags">
+    <Key>
+      <PropertyRef Name="BlogId" />
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Name="BlogId" Type="int" Nullable="false" />
+    <Property Name="TagId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommentatorName" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="CommentatorCountry" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="Comment" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="IsReply" Type="int" Nullable="false" />
+    <Property Name="RegisterDate" Type="smalldatetime" Nullable="false" />
+    <Property Name="BlogId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contacts">
+    <Key>
+      <PropertyRef Name="ContactId" />
+    </Key>
+    <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LinkedinURL" Type="varchar(max)" Nullable="false" />
+    <Property Name="GithubURL" Type="varchar(max)" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="RegisterDate" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Portfolios">
+    <Key>
+      <PropertyRef Name="PortfoliosId" />
+    </Key>
+    <Property Name="PortfoliosId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageURL" Type="varchar(max)" Nullable="false" />
+    <Property Name="ProjeName" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="ProjeCategory" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="RegisterDate" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RolId" />
+    </Key>
+    <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RolName" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="RegisterDate" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="ServisId" />
+    </Key>
+    <Property Name="ServisId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServisName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ServisDescription" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="RegisterDate" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sliders">
+    <Key>
+      <PropertyRef Name="SliderId" />
+    </Key>
+    <Property Name="SliderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageURL" Type="varchar(max)" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="SubTitle" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Name="TagId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TagName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="RegisterDate" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TeamDescriptions">
+    <Key>
+      <PropertyRef Name="TeamDescriptionId" />
+    </Key>
+    <Property Name="TeamDescriptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstTitle" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="SubTitle" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="ImageURL" Type="varchar(max)" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Teams">
+    <Key>
+      <PropertyRef Name="TeamId" />
+    </Key>
+    <Property Name="TeamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PersonImage" Type="varchar(max)" Nullable="false" />
+    <Property Name="PersonName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PersonJob" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TwitterURL" Type="varchar(max)" Nullable="false" />
+    <Property Name="FacebookURL" Type="varchar(max)" Nullable="false" />
+    <Property Name="LinkedinURL" Type="varchar(max)" Nullable="false" />
+    <Property Name="InstagramURL" Type="varchar(max)" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="RegisterDate" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="16" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="RegisterDate" Type="smalldatetime" Nullable="false" />
+    <Property Name="RolId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_BlogDetails_Blogs">
+    <End Role="Blogs" Type="Self.Blogs" Multiplicity="1" />
+    <End Role="BlogDetails" Type="Self.BlogDetails" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Blogs">
+        <PropertyRef Name="BlogId" />
+      </Principal>
+      <Dependent Role="BlogDetails">
+        <PropertyRef Name="BlogId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BlogToTags_Blogs1">
+    <End Role="Blogs" Type="Self.Blogs" Multiplicity="1" />
+    <End Role="BlogToTags" Type="Self.BlogToTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blogs">
+        <PropertyRef Name="BlogId" />
+      </Principal>
+      <Dependent Role="BlogToTags">
+        <PropertyRef Name="BlogId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BlogToTags_Tags1">
+    <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+    <End Role="BlogToTags" Type="Self.BlogToTags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tags">
+        <PropertyRef Name="TagId" />
+      </Principal>
+      <Dependent Role="BlogToTags">
+        <PropertyRef Name="TagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_Blogs">
+    <End Role="Blogs" Type="Self.Blogs" Multiplicity="1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blogs">
+        <PropertyRef Name="BlogId" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="BlogId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RolId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PA_BlogProje_2021_DbModelStoreContainer">
+    <EntitySet Name="Abouts" EntityType="Self.Abouts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BlogDetails" EntityType="Self.BlogDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Blogs" EntityType="Self.Blogs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BlogToTags" EntityType="Self.BlogToTags" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Portfolios" EntityType="Self.Portfolios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sliders" EntityType="Self.Sliders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TeamDescriptions" EntityType="Self.TeamDescriptions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_BlogDetails_Blogs" Association="Self.FK_BlogDetails_Blogs">
+      <End Role="Blogs" EntitySet="Blogs" />
+      <End Role="BlogDetails" EntitySet="BlogDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BlogToTags_Blogs1" Association="Self.FK_BlogToTags_Blogs1">
+      <End Role="Blogs" EntitySet="Blogs" />
+      <End Role="BlogToTags" EntitySet="BlogToTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BlogToTags_Tags1" Association="Self.FK_BlogToTags_Tags1">
+      <End Role="Tags" EntitySet="Tags" />
+      <End Role="BlogToTags" EntitySet="BlogToTags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_Blogs" Association="Self.FK_Comments_Blogs">
+      <End Role="Blogs" EntitySet="Blogs" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

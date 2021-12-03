@@ -1,0 +1,64 @@
+﻿
+<header class="navigation">
+    <div class="header-top ">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-2 col-md-4">
+                    <div class="header-top-socials text-center text-lg-left text-md-left">
+                      
+                        <a href="https://github.com/themefisher/" target="_blank"><i class="ti-github"></i></a>
+                        <a href="https://github.com/themefisher/" target="_blank"><i class="ti-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-md-8 text-center text-lg-right text-md-right">
+                    <div class="header-top-info">
+   
+                        <a href="mailto:support@gmail.com"><i class="fa fa-envelope mr-2"></i><span>iletişimadresim@gmail.com</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg  py-4" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index","Home")">
+                Piksel<span>Akademi.</span>
+            </a>
+
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa fa-bars"></span>
+            </button>
+
+            <div class="collapse navbar-collapse text-center" id="navbarsExample09">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="@Url.Action("Index","Home")">Ana Sayfa <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("About","Home")">Hakkımda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Services","Home")">Hizmetlerim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Portfolio","Home")">Portföy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Blog","Home")">Blog</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Contact","Home")">İletişim</a></li>
+                </ul>
+
+
+                <!--BU LİNKLE GİRİŞ YAPMA SAYFASINA GİDECEĞİM-->
+
+                @if (Session["KullanıcıAdı"] != null)
+                {
+                  
+                   <span style="color:white; font-size:20px; margin:1px">@Session["KullanıcıAdı"]</span> <a href="@Url.Action("Logout","Account",new {area="ManagementPanel" })">Çıkış Yap <i class="fa fa-times-circle"></i></a>
+                }
+                else
+                {
+                    <form class="form-lg-inline my-2 my-md-0 ml-lg-4 text-center">
+                        <a href="@Url.Action("Login","Account",new {area="ManagementPanel"})" class="btn btn-solid-border btn-round-full">Giriş Yap</a>
+                    </form>
+                }
+
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="58c97b65136a486fa40a463811b70860" Name="Diagram1">
+        <EntityTypeShape EntityType="PA_BlogProje_2021_DbModel.Abouts" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_BlogProje_2021_DbModel.BlogDetails" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_BlogProje_2021_DbModel.Blogs" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_BlogProje_2021_DbModel.Comments" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_BlogProje_2021_DbModel.Contacts" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_BlogProje_2021_DbModel.Roles" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_BlogProje_2021_DbModel.Sliders" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_BlogProje_2021_DbModel.Tags" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_BlogProje_2021_DbModel.TeamDescriptions" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_BlogProje_2021_DbModel.Users" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="PA_BlogProje_2021_DbModel.FK_BlogDetails_Blogs" ManuallyRouted="false" />
+        <AssociationConnector Association="PA_BlogProje_2021_DbModel.FK_Comments_Blogs" ManuallyRouted="false" />
+        <AssociationConnector Association="PA_BlogProje_2021_DbModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="PA_BlogProje_2021_DbModel.BlogToTags" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PA_BlogProje_2021_DbModel.Teams" Width="1.5" PointX="4" PointY="10.625" />
+        <EntityTypeShape EntityType="PA_BlogProje_2021_DbModel.Services" Width="1.75" PointX="10.375" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_BlogProje_2021_DbModel.Portfolios" Width="1.5" PointX="6.375" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

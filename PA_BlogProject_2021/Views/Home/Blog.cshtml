@@ -1,0 +1,81 @@
+﻿@model PA_BlogProject_2021.Models.ViewModel.BlogViewModel
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section AboutSlider{
+
+    @Html.Partial("_AboutSlider")
+
+}
+<style>
+    #resim {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<section class="section blog-wrap bg-gray">
+    <div class="container">
+      
+
+            <div id="BlogFilter">
+                @Html.Partial("_BlogFilter", Model.Blogs)
+            </div>
+
+
+        <div class="sidebar-widget bg-white rounded tags p-4 mb-3">
+            <!--tAGLAR-->
+            <h5 class="mb-2">Etiketler</h5>
+            @foreach (var tags in Model.Tags)
+            {
+               
+                    <a href="#" onclick="tagGetir(@(tags.TagId))">@tags.TagName</a>
+                
+            }
+
+        </div>
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-6 text-center">
+                <nav class="navigation pagination d-inline-block">
+                    <div class="nav-links">
+                        <a class="prev page-numbers" href="#">Prev</a>
+                        <span aria-current="page" class="page-numbers current">1</span>
+                        <a class="page-numbers" href="#">2</a>
+                        <a class="next page-numbers" href="#">Next</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+@section Scripts{
+    <script>
+
+        function tagGetir(TagId) {
+            // tagGetir Fonksiyonum taglarda onclick fonksiyonu tetiklendiğinde içine verdiğim int değerenin bana getirmesini sağladı.
+            //alert(TagId);
+            $.ajax({
+                //ajax ile aldığım tagId verisini controller'ımdaki TagFilter adında oluşturduğum action'a gönderdim
+                url: '/Home/TagFilter',
+                method: 'GET',
+                data: { TagId }, // fonksitonumdan gelen parametrediki ıd değerini data olarak gönderiyorum.
+                success: function (data) {
+                    $('#BlogFilter').html(data);  // eğer ki action'ımdan bana veri gelirse o veriyi ben sayfamda göstereceğim
+                    // Sayfamda görüneceği yer ise #BlogFilter adında oluşturduğum id'deki html basacak.
+                },
+                error: function (data) { // eğer ki verim boş geldiyse beni uyarsın taglar boş döndü
+                    alert("Bloglar Filtrelenemedi!")
+                }
+
+            })
+        }
+
+    </script>
+
+   
+
+
+}

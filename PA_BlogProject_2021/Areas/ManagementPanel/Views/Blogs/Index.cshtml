@@ -1,0 +1,76 @@
+﻿@model IEnumerable<PA_BlogProject_2021.Models.Blogs>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ManagementPanel/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="width:1%">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubTitle)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegisterDate)
+            </th>
+            <th>
+                <span>ETİKETLER</span>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BlogDetails.Description)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr >
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubTitle)
+                </td>
+           
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegisterDate)
+                </td>
+                <td>
+                    @foreach (var taglar in item.Tags)
+                    {
+                        <span>@taglar.TagName,</span>
+                    }
+
+                </td>
+                <td >
+
+                    @Html.DisplayFor(modelItem => item.BlogDetails.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BlogId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.BlogId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.BlogId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -1,0 +1,155 @@
+﻿@model PA_BlogProject_2021.Models.ViewModel.IndexViewModel
+@{
+    ViewBag.Title = "Ana Sayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section IndexSlider{
+    <!--Parçaya model gönderme nasıl yapılır?-->
+   @Html.Partial("_IndexSlider",Model)  
+    }
+
+
+
+
+
+<!-- Section Intro Start -->
+
+<section class="section intro "style="padding: 35px">
+    <div class="container "style="padding:20px">
+        <div class="row ">
+            <div class="col-lg-8">
+               
+            </div>
+        </div>
+        <div class="row justify-content-center">
+          
+        </div>
+    </div>
+</section>
+
+<!-- Section Intro END -->
+<!-- Section About Start -->
+
+<section class="section about position-relative">
+    <div class="bg-about"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-6 offset-md-0">
+                <div class="about-item ">
+                    @foreach (var item in Model.TeamDescriptions)
+                    {
+
+                    <span class="h6 text-color">@item.FirstTitle</span>
+                    <h2 class="mt-3 mb-4 position-relative content-title">@item.SubTitle</h2>
+                    <div class="about-content">
+                        <h4 class="mb-3 position-relative">@item.Title</h4>
+                        <p class="mb-5">@item.Description</p>
+
+                        <a href="#" class="btn btn-main btn-round-full">Hadi Başlayalım</a>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- section Counter End  -->
+<!--  Section Services Start -->
+<section class="section service border-top">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 text-center">
+                <div class="section-title">
+
+                    <h2 class="mt-3 content-title ">Yeteneklerim </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            @foreach (var item in Model.Services)
+            {
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-item mb-5">
+                    <i class="ti-desktop"></i>
+                    <h4 class="mb-3">@item.ServisName</h4>
+                    <p>@item.ServisDescription</p>
+                </div>
+            </div>
+            }
+
+           
+        </div>
+    </div>
+</section>
+<!--  Section Services End -->
+<!-- Section Cta Start -->
+<section class="section cta">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="cta-item  bg-white p-5 rounded">
+                    <span class="h6 text-color">Bizimle İletişime Geçin</span>
+                    <h2 class="mt-2 mb-4">7/24 Destek hattımız:</h2>
+                    @foreach (var item in Model.Contacts)
+                    {
+
+                    <h3><i class="ti-email mr-3 text-color"></i>@item.Email</h3>
+                    <h3><i class="ti-alert mr-3 text-color"></i>@item.Address</h3>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Testimonial End -->
+<section class="section latest-blog bg-2">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 text-center">
+                <div class="section-title">
+                    <span class="h3 text-color">Son Blog Yazıları</span>
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 mb-5">
+                <div class="card bg-transparent border-0">
+                    @foreach (var item in Model.Blogs.OrderByDescending(b=>b.BlogId).Take(3).ToList())/// son 3 tane blogu getir
+                    {
+
+                    <img src="@item.ImageURL" alt="" class="img-fluid rounded">
+
+                    <div class="card-body mt-2">
+                        <div class="blog-item-meta">
+                            @foreach (var tag in item.Tags)
+                        {
+
+                            <a href="#" class="text-white-50">@tag.TagName<span class="ml-2 mr-2">-</span></a> // /taglar da farklı olsun
+                        }
+                            <a href="#" class="text-white-50">@item.BlogDetails.AuthorJob<span class="ml-2">/</span></a>
+                            <a href="#" class="text-white-50 ml-2"><i class="fa fa-user mr-2"></i>@item.BlogDetails.AuthorName</a>
+                        </div>
+
+                        <h3 class="mt-3 mb-5 lh-36"><a href="#" class="text-white ">@item.Title</a></h3>
+
+                        <a href="@Url.Action("BlogDetails","Home",new { id=item.BlogId})" class="btn btn-small btn-solid-border btn-round-full text-white">Yazının Devamını Oku</a>
+                    </div><!---Kendi blog sitende blogları siteye getir ve tıklandığında detayına gitsin-->
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+

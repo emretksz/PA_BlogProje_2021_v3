@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PA_BlogProject_2021.Models.Roles>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ManagementPanel/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RolName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegisterDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RolName)
+        </td>
+        <td>
+
+            <!--DisplayFor benim database'imdeki verinin adını(içeriğin adı) getirir. IsActive true ise true adını koyar false False adını verir -->
+            <!--ben burada html.helper kullanmak yerine foreach'imden dönen item verilerinden ısactive buldum ve true ise sayfa aktif o olarak yazdırdım.-->
+            @if (item.IsActive)
+            {
+                <span>Aktif</span>
+            }
+            else
+            {
+                <span>Pasif</span>
+            }
+      
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegisterDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RolId }) | <!-- Rol Controllerımın içindeki edite git ama giderken de  bu sayfamın id'sini de al    -->
+            @Html.ActionLink("Details", "Details", new { id=item.RolId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RolId })
+        </td>
+    </tr>
+}
+
+</table>
